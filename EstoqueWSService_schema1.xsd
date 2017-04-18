@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" targetNamespace="http://servico.estoque.caelum.com.br/" xmlns:tns="http://servico.estoque.caelum.com.br/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="AutorizacaoFault" nillable="true" type="tns:infoFault"/>
+
+  <xs:element name="CadastroItem" type="tns:CadastroItem"/>
+
+  <xs:element name="CadastroItemResponse" type="tns:CadastroItemResponse"/>
+
+  <xs:element name="item" type="tns:item"/>
+
+  <xs:element name="listaItens" type="tns:listaItens"/>
+
+  <xs:element name="todosOsItens" type="tns:todosOsItens"/>
+
+  <xs:element name="todosOsItensResponse" type="tns:todosOsItensResponse"/>
+
+  <xs:element name="tokenUsuario" nillable="true" type="tns:tokenUsuario"/>
+
+  <xs:complexType name="CadastroItem">
+    <xs:sequence>
+      <xs:element name="item" type="tns:item" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="item">
+    <xs:sequence>
+      <xs:element name="codigo" type="xs:string"/>
+      <xs:element name="nome" type="xs:string"/>
+      <xs:element name="tipo" type="xs:string"/>
+      <xs:element name="quantidade" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="tokenUsuario">
+    <xs:sequence>
+      <xs:element name="token" type="xs:string"/>
+      <xs:element name="dataValidade" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CadastroItemResponse">
+    <xs:sequence>
+      <xs:element name="item" type="tns:item" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="infoFault">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="todosOsItens">
+    <xs:sequence>
+      <xs:element name="filtros" type="tns:filtros" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="filtros">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="todosOsItensResponse">
+    <xs:sequence>
+      <xs:element name="item" type="tns:listaItens" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="listaItens">
+    <xs:sequence>
+      <xs:element name="item" type="tns:item" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+
